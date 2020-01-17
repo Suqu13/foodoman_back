@@ -16,6 +16,7 @@ interface ProductConverter {
             Mapping(source = "height", target = "height"),
             Mapping(source = "allPiecesNumber", target = "allPiecesNumber"),
             Mapping(source = "surface", target = "surface"),
+            Mapping(source = "imageUrl", target = "imageUrl"),
             Mapping(source = "description", target = "description"),
             Mapping(source = "producer", target = "producer")
     )

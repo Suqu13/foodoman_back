@@ -15,6 +15,8 @@ class ProductsSetsController(private val productsSetsService: ProductsSetsServic
     fun fetchProductSetById(@PathVariable id: Long) = converter.convertToDTO(productsSetsService.findById(id))
 
     @GetMapping(value = ["/product/{id}"])
-    fun fetchProductsSetsByProductId(@PathVariable id: Long) = converter.convertToDTOsWithoutRacksSet(productsSetsService.findAllByProduct_Id(id))
+    fun fetchAllProductsSetsByProductId(@PathVariable id: Long) = converter.convertToDTOsWithoutRacksSet(productsSetsService.findAllByProductId(id))
 
+    @GetMapping(value = ["/product/{productId}/priority/{priorityId}"])
+    fun fetchAllProductsSetsByProductIdAndPriorityId(@PathVariable productId: Long, @PathVariable priorityId: Long) = converter.convertToDTOsSet(productsSetsService.findAllByProductIdAndPriorityId(productId, priorityId))
 }

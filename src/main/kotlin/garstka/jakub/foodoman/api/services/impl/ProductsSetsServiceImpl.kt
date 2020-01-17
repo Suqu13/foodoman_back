@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class ProductsSetsServiceImpl(private val productsSetsRepository: ProductsSetsRepository) : ProductsSetsService {
-    override fun findAllByProduct_Id(id: Long): Set<ProductSet> = productsSetsRepository.findAllByProduct_Id(id);
+    override fun findAllByProductId(id: Long): Set<ProductSet> = productsSetsRepository.findAllByProduct_Id(id);
+
+    override fun findAllByProductIdAndPriorityId(productId: Long, priorityId: Long): Set<ProductSet> = productsSetsRepository.findAllByProduct_IdAndPriorityId(productId, priorityId)
 
     override fun findAll(): Set<ProductSet> = productsSetsRepository.findAll().toSet()
 

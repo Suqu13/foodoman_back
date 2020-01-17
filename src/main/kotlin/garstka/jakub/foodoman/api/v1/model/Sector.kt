@@ -15,7 +15,7 @@ data class Sector(
         @Column(nullable = false)
         var description: String?,
 
-        @OneToMany(mappedBy = "sector", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+        @OneToMany(mappedBy = "sector", cascade = [CascadeType.ALL])
         var racks: List<Rack>?
 ) {
         constructor() : this(null, null, null, null)

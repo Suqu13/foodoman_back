@@ -1,11 +1,10 @@
 package garstka.jakub.foodoman.api.v1.model
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
-@Table(name = "producers")
-data class Producer(
+@Table(name = "priorities")
+data class Priority(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long?,
@@ -16,14 +15,12 @@ data class Producer(
         @Column(nullable = false)
         var description: String?,
 
-        @OneToMany(mappedBy = "producer", cascade = [CascadeType.ALL])
-        var products: List<Product>?
+        @OneToMany(mappedBy = "priority", cascade = [CascadeType.ALL])
+        var prioritiesLevels: List<PriorityLevel>?
 ) {
     constructor() : this(null, null, null, null)
 
-        override fun toString(): String {
-                return "Producer(id=$id, name=$name, description=$description)"
-        }
-
-
+    override fun toString(): String {
+        return "Priority(id=$id, name=$name, description=$description)"
+    }
 }

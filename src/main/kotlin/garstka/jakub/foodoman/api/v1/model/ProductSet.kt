@@ -1,6 +1,5 @@
 package garstka.jakub.foodoman.api.v1.model
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import java.util.*
 import javax.persistence.*
 
@@ -20,7 +19,10 @@ data class ProductSet(
         @Column(nullable = false)
         var description: String?,
 
-        @ManyToOne(fetch = FetchType.LAZY)
+        @OneToMany(mappedBy = "productSet", cascade = [CascadeType.ALL])
+        var prioritiesLevels: List<PriorityLevel>?,
+
+        @ManyToOne
         @JoinColumn(name = "product_id")
         var product: Product?,
 
@@ -28,9 +30,9 @@ data class ProductSet(
         @JoinColumn(name = "rack_id")
         var rack: Rack?
 ) {
-    constructor() : this(null, null, null, null, null, null)
+    constructor() : this(null, null, null, null, null, null, null)
 
-        override fun toString(): String {
-                return "ProductSet(id=$id, pieces=$pieces, expiryDate=$expiryDate, description=$description)"
-        }
+    override fun toString(): String {
+        return "ProductSet(id=$id, pieces=$pieces, expiryDate=$expiryDate, description=$description)"
+    }
 }

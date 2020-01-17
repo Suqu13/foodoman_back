@@ -1,6 +1,6 @@
 package garstka.jakub.foodoman.api.dto
 
-class SectorDTO(
+data class SectorDTO(
         var id: Long?,
         var number: Int?,
         var description: String?

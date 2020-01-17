@@ -1,6 +1,6 @@
 package garstka.jakub.foodoman.api.dto
 
-class RackDTO(
+data class RackDTO(
         var id: Long?,
         var number: Int?,
         var description: String?,
