@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("producers")
 class ProducersController (private val producersService: ProducersService, private val converter: ProducerConverter) {
 
-    @GetMapping
+    @GetMapping(produces = ["application/json; charset=utf-8"])
     fun fetchAllProducers() = converter.convertToDTOsSet(producersService.findAll())
 }

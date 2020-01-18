@@ -12,7 +12,8 @@ data class Priority(
         @Column(nullable = false)
         var name: String?,
 
-        @Column(nullable = false)
+        @Lob
+        @Column(nullable = false, columnDefinition="TEXT")
         var description: String?,
 
         @OneToMany(mappedBy = "priority", cascade = [CascadeType.ALL])

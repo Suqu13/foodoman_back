@@ -12,7 +12,8 @@ data class Sector(
         @Column(nullable = false)
         var number: Int?,
 
-        @Column(nullable = false)
+        @Lob
+        @Column(nullable = false, columnDefinition="TEXT")
         var description: String?,
 
         @OneToMany(mappedBy = "sector", cascade = [CascadeType.ALL])

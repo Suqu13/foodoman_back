@@ -27,7 +27,8 @@ data class Product(
         @Column
         var imageUrl: String?,
 
-        @Column
+        @Lob
+        @Column(columnDefinition="TEXT")
         var description: String?,
 
         @ManyToOne(fetch = FetchType.LAZY)

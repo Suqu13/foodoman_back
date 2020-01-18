@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("priorities")
 class PrioritiesController(private val prioritiesService: PrioritiesService, private val converter: PriorityConverter) {
 
-    @GetMapping
+    @GetMapping(produces = ["application/json; charset=utf-8"])
     fun fetchAllPriorities() = converter.convertToDTOsSet(prioritiesService.findAll())
 
-    @GetMapping(value = ["/product/{id}"])
-    fun fetchAllPrioritiesByProductId(@PathVariable id:Long) = converter.convertToDTOsSet(prioritiesService.findAllByProductId(id))
+    @GetMapping("/product/{id}", produces = ["application/json; charset=utf-8"])
+    fun fetchAllPrioritiesByProductId(@PathVariable id: Long) = converter.convertToDTOsSet(prioritiesService.findAllByProductId(id))
 }

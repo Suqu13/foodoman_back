@@ -13,7 +13,8 @@ data class Producer(
         @Column(nullable = false)
         var name: String?,
 
-        @Column(nullable = false)
+        @Lob
+        @Column(nullable = false, columnDefinition="TEXT")
         var description: String?,
 
         @OneToMany(mappedBy = "producer", cascade = [CascadeType.ALL])

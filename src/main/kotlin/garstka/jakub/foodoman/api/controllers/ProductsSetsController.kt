@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("products_sets")
 class ProductsSetsController(private val productsSetsService: ProductsSetsService, private val converter: ProductSetConverter) {
 
-    @GetMapping(value = ["/{id}"])
+    @GetMapping("/{id}", produces = ["application/json; charset=utf-8"])
     fun fetchProductSetById(@PathVariable id: Long) = converter.convertToDTO(productsSetsService.findById(id))
 
-    @GetMapping(value = ["/product/{id}"])
+    @GetMapping("/product/{id}", produces = ["application/json; charset=utf-8"])
     fun fetchAllProductsSetsByProductId(@PathVariable id: Long) = converter.convertToDTOsWithoutRacksSet(productsSetsService.findAllByProductId(id))
 
-    @GetMapping(value = ["/product/{productId}/priority/{priorityId}"])
+    @GetMapping("/product/{productId}/priority/{priorityId}", produces = ["application/json; charset=utf-8"])
     fun fetchAllProductsSetsByProductIdAndPriorityId(@PathVariable productId: Long, @PathVariable priorityId: Long) = converter.convertToDTOsSet(productsSetsService.findAllByProductIdAndPriorityId(productId, priorityId))
 }

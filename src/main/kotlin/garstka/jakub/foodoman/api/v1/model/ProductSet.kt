@@ -16,7 +16,8 @@ data class ProductSet(
         @Column(nullable = false)
         var expiryDate: Date?,
 
-        @Column(nullable = false)
+        @Lob
+        @Column(nullable = false, columnDefinition="TEXT")
         var description: String?,
 
         @OneToMany(mappedBy = "productSet", cascade = [CascadeType.ALL])
