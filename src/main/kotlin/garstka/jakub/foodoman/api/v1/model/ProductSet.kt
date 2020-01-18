@@ -23,11 +23,11 @@ data class ProductSet(
         @OneToMany(mappedBy = "productSet", cascade = [CascadeType.ALL])
         var prioritiesLevels: List<PriorityLevel>?,
 
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "product_id")
         var product: Product?,
 
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "rack_id")
         var rack: Rack?
 ) {
