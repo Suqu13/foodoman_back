@@ -35,6 +35,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("mysql:mysql-connector-java")
+    testImplementation("io.mockk:mockk:1.9.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }

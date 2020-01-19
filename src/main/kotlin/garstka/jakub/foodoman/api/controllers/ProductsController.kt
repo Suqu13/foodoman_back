@@ -1,5 +1,6 @@
 package garstka.jakub.foodoman.api.controllers
 
+import garstka.jakub.foodoman.api.controllers.ProductsController.Companion.PRODUCTS_CONTROLLER_BASE_URL
 import garstka.jakub.foodoman.api.dto.ProductDTO
 import garstka.jakub.foodoman.api.mappers.ProductConverter
 import garstka.jakub.foodoman.api.services.ProductsService
@@ -7,8 +8,11 @@ import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("products")
+@RequestMapping(PRODUCTS_CONTROLLER_BASE_URL)
 class ProductsController(private val productsService: ProductsService, private val converter: ProductConverter) {
+    companion object {
+        const val PRODUCTS_CONTROLLER_BASE_URL = "products"
+    }
 
     @GetMapping(produces = ["application/json; charset=utf-8"])
     fun fetchAllProducts() = converter.convertToDTOsSet(productsService.findAll())

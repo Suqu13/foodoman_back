@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class ProductsServiceImpl(private val productsRepository: ProductsRepository) : ProductsService {
-    override fun editPartially(product: Product) {
-        val foundProduct = findById(product.id ?: -1)
+    override fun editPartially(product: Product): Product {
+        val foundProduct = productsRepository.findById(product.id!!).orElseThrow { ProductNotFoundException(product.id!!) }
 
         val editedProduct = Product(
                 id = product.id ?: foundProduct.id,
@@ -23,7 +23,7 @@ class ProductsServiceImpl(private val productsRepository: ProductsRepository) : 
                 productSets = product.productSets ?: foundProduct.productSets,
                 allPiecesNumber = product.allPiecesNumber ?: foundProduct.allPiecesNumber
         )
-        save(editedProduct)
+        return productsRepository.save(editedProduct)
     }
 
     override fun findAll() = productsRepository.findAll().toSet()
