@@ -8,9 +8,19 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.io.IOException
 import javax.servlet.http.HttpServletResponse
 
+/**
+ * Klasa obsługująca błędy serwera związane z wyszukiwaniem nieistniejących zasobów
+ *
+ */
 @ControllerAdvice
 class ExceptionHandler : ResponseEntityExceptionHandler() {
 
+    /**
+     * Funkcja przechwytująca odpowiedzi serwera spowodowane błędem 'ResourceNotFoundException'.
+     * Modyfikuje 'HttpServletResponse' serwera o odpowiedni 'HttpStatus', w tym wypadku 'NOT_FOUND'
+     *
+     * @param response - parametr będący 'HttpServletResponse' serwera na wystąpienie błędu 'ResourceNotFoundException'
+     */
     @ExceptionHandler(ResourceNotFoundException::class)
     @Throws(IOException::class)
     fun handleNotFound(response: HttpServletResponse) {

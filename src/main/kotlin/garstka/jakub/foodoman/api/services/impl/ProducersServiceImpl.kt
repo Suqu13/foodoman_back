@@ -6,6 +6,10 @@ import garstka.jakub.foodoman.api.services.ProducersService
 import garstka.jakub.foodoman.api.v1.model.Producer
 import org.springframework.stereotype.Service
 
+/**
+ * Klasa realizująca założenia interfejsu 'producers_service'
+ *
+ */
 @Service
 class ProducersServiceImpl(private val producersRepository: ProducersRepository) : ProducersService {
     override fun findAll(): Set<Producer> = producersRepository.findAll().toSet()

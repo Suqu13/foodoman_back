@@ -6,6 +6,10 @@ import garstka.jakub.foodoman.api.services.PrioritiesService
 import garstka.jakub.foodoman.api.v1.model.Priority
 import org.springframework.stereotype.Service
 
+/**
+ * Klasa realizująca założenia interfejsu 'priorities_service'
+ *
+ */
 @Service
 class PrioritiesServiceImpl(private val prioritiesRepository: PrioritiesRepository) : PrioritiesService {
     override fun findAll(): Set<Priority> = prioritiesRepository.findAll().toSet()

@@ -1,8 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
     id("org.springframework.boot") version "2.2.2.RELEASE"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
+    id("org.jetbrains.dokka") version "0.10.0"
     kotlin("jvm") version "1.3.61"
     kotlin("plugin.spring") version "1.3.61"
     kotlin("kapt") version "1.3.61"
@@ -20,6 +22,7 @@ configurations {
 }
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
@@ -49,5 +52,12 @@ tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "1.8"
+    }
+}
+
+tasks {
+    val dokka by getting(DokkaTask::class) {
+        outputDirectory = "$buildDir/dokka"
+        outputFormat = "html"
     }
 }

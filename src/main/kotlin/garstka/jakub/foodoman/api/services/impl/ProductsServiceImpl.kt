@@ -6,6 +6,10 @@ import garstka.jakub.foodoman.api.services.ProductsService
 import garstka.jakub.foodoman.api.v1.model.Product
 import org.springframework.stereotype.Service
 
+/**
+ * Klasa realizująca założenia interfejsu 'products_service'
+ *
+ */
 @Service
 class ProductsServiceImpl(private val productsRepository: ProductsRepository) : ProductsService {
     override fun editPartially(product: Product): Product {

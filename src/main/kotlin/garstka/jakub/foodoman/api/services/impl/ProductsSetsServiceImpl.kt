@@ -6,6 +6,10 @@ import garstka.jakub.foodoman.api.services.ProductsSetsService
 import garstka.jakub.foodoman.api.v1.model.ProductSet
 import org.springframework.stereotype.Service
 
+/**
+ * Klasa realizująca założenia interfejsu 'products_sets_service'
+ *
+ */
 @Service
 class ProductsSetsServiceImpl(private val productsSetsRepository: ProductsSetsRepository) : ProductsSetsService {
     override fun findAllByProductId(id: Long): Set<ProductSet> = productsSetsRepository.findAllByProduct_Id(id);
